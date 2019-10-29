@@ -22,8 +22,8 @@ install:
   - node --version
   - npm -g install npm@6.11.3
   - set PATH=%APPDATA%\npm;%PATH%
-  - npm i -g https://github.com/nodejs/node-gyp
-  - for /f "delims=" %P in ('npm prefix -g') do npm config set node_gyp "%P\node_modules\node-gyp\bin\node-gyp.js"
+  - npm i -g nodejs/node-gyp#rvagg/v6.0.1-proposal
+  - npm prefix -g | % {npm config set node_gyp "$_\node_modules\node-gyp\bin\node-gyp.js"}
   - npm --version
   - npm config set msvs_version 2015
   - npm run bootstrap
