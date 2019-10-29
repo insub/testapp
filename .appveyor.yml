@@ -20,6 +20,8 @@ install:
   - SET "PATH=%PATH%;C:\Program Files\Git\mingw64\libexec\git-core" # For weird git bug
   - ps: Install-Product node $env:NODEJS_VERSION $env:Platform
   - node --version
+  - npm -g install npm@6.11.3
+  - set PATH=%APPDATA%\npm;%PATH%
   - npm --version
   - npm config set msvs_version 2015
   - npm run bootstrap
