@@ -1,5 +1,5 @@
-# Insomnia Libcurl
+# Apier Libcurl
 
-[![Npm Version](https://img.shields.io/npm/v/insomnia-libcurl.svg)](https://www.npmjs.com/package/insomnia-libcurl)
+[![Npm Version]](https://www.npmjs.com/package/apier-libcurl)
 
-Libcurl helper for Insomnia.
+Libcurl helper for Apier.
