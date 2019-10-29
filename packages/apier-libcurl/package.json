@@ -1,0 +1,16 @@
+{
+  "name": "apier-libcurl",
+  "version": "0.0.31",
+  "author": "apier <apier.dev@gmail.com>",
+  "description": "Apier libcurl wrapper",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --version"
+  },
+  "dependencies": {
+    "fstream": "^1.0.12",
+    "node-libcurl": "^2.0.2",
+    "tar": "^4.4.10"
+  }
+}

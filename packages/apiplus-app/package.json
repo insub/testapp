@@ -25,7 +25,7 @@
     "start": "concurrently --kill-others \"npm run start:dev-server\" \"npm run start:electron\"",
     "build": "node ./scripts/build.js",
     "package": "node ./scripts/package.js",
-    "bootstrap": "rimraf node_modules/fsevents && rimraf node_modules/graphql-language-service-interface/dist/*.flow && electron-rebuild -f -w insomnia-libcurl"
+    "bootstrap": "rimraf node_modules/fsevents && rimraf node_modules/graphql-language-service-interface/dist/*.flow && electron-rebuild -f -w apier-libcurl"
   },
   "dev": {
     "dev-server-port": 3333
@@ -112,7 +112,7 @@
     "insomnia-cookies": "0.0.7",
     "insomnia-httpsnippet": "1.16.12",
     "insomnia-importers": "2.0.6",
-    "insomnia-libcurl": "0.0.30",
+    "apier-libcurl": "0.0.31",
     "insomnia-plugin-base64": "1.0.4",
     "insomnia-plugin-cookie-jar": "1.0.2",
     "insomnia-plugin-core-themes": "1.0.4",

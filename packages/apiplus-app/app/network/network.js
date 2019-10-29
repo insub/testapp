@@ -8,7 +8,7 @@ import { getRenderedRequestAndContext, RENDER_PURPOSE_SEND } from '../common/ren
 import mkdirp from 'mkdirp';
 import clone from 'clone';
 import { parse as urlParse, resolve as urlResolve } from 'url';
-import { Curl } from 'insomnia-libcurl';
+import { Curl } from 'apier-libcurl';
 import { join as pathJoin } from 'path';
 import uuid from 'uuid';
 import * as electron from 'electron';

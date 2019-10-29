@@ -15,7 +15,7 @@ import Account from '../settings/account';
 import Plugins from '../settings/plugins';
 import Theme from '../settings/theme';
 import * as models from '../../../models/index';
-import { Curl } from 'insomnia-libcurl';
+import { Curl } from 'apier-libcurl';
 import { getAppName, getAppVersion } from '../../../common/constants';
 import * as session from '../../../sync/session';
 import Tooltip from '../tooltip';

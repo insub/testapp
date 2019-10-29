@@ -94,7 +94,7 @@ declare class Curl {
   setUrl: (url: string) => void;
 }
 
-declare module 'insomnia-libcurl' {
+declare module 'apier-libcurl' {
   declare module.exports: {
     Curl: typeof Curl
   };
