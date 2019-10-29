@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>apiplus app</title>
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src * apiplus://*; img-src blob: data: * apiplus://*; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src * 'self' 'unsafe-inline'; media-src blob: data: mediastream: * apiplus://*;">
+  <link rel="stylesheet" href="static/termynal.css">
+  <style type="text/css">
+    #termynal{
+      width: 100%;
+      background: none;
+      font-size: 13px;
+      padding: 0;
+      font-weight: bold;
+      color: #c0c0c0;
+    }
+    .success{
+      color: #00ff00;
+    }
+    [data-ty]{
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+<h1 style="color:#fff;"> Splash ! </h1>
+<div id="termynal" data-termynal>
+  <span data-ty data-ty-prompt=">">initializing apiplus</span>
+  <span data-ty="progress" data-ty-progressLength="38"></span>
+  <span data-ty data-ty-prompt=">" class="success">Successfully initializing apiplus</span>
+  <span data-ty data-ty-prompt=">">Hello world!</span>
+  <span data-ty data-ty-prompt=">">Version: dark 0.7.0</span>
+  <span data-ty data-ty-prompt=">">Time: 12.023ms</span>
+  <span data-ty data-ty-prompt=">"></span>
+  <span data-ty data-ty-prompt=">">[localstorage] Initializ localStorage</span>
+  <span data-ty data-ty-prompt=">" class="success">Successfully initializing localStorage</span>
+  <span data-ty data-ty-prompt=">">[main] Loading http://localhost:3333/renderer.html</span>
+  <span data-ty data-ty-prompt=">" class="success">Successfully loading</span>
+  <span data-ty data-ty-prompt=">">[fix] Running database repairs</span>
+  <span data-ty data-ty-prompt=">" class="success">Successfully repair database</span>
+  <span data-ty data-ty-prompt=">">Time: 1.409ms</span>
+  <span data-ty data-ty-prompt=">">[updater] Running updater check</span>
+  <span data-ty data-ty-prompt=">" class="success">Compiled successfully!!!</span>
+  <span data-ty data-ty-prompt=">">App starting...</span>
+  <span data-ty="progress" data-ty-progressPercent="90" data-ty-progressLength="70"></span>
+</div>
+<script src="static/termynal.js"></script>
+<script type="text/javascript">
+  var termynal = new Termynal('#termynal', { 
+    startDelay: 0,
+    typeDelay: 30,
+    lineDelay: 140,
+    progressLength: 45,
+    progressChar: '.',
+    cursor: '|'
+  })
+</script>
+</body>
+</html>

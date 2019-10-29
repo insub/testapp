@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>favicon copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="78.8736979%" y1="24.226888%" x2="33.6588542%" y2="69.7509766%" id="linearGradient-1">
+            <stop stop-color="#25FF26" offset="0%"></stop>
+            <stop stop-color="#06DEBC" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="favicon-copy">
+            <path d="M28,56 C52.5,56 56,42 56,28 C56,14 52.5,0 28,0 C3.5,3.00038466e-15 0,14 0,28 C8.57252759e-16,42 3.5,56 28,56 Z" id="Path-Copy-5" fill="#292C34" fill-rule="nonzero"></path>
+            <path d="M28,42 C20.2680135,42 14,35.7319865 14,28 C14,20.2680135 20.2680135,14 28,14 C35.7319865,14 42,20.2680135 42,28 C42,35.7319865 35.7319865,42 28,42 Z M28,36.4 C32.6391919,36.4 36.4,32.6391919 36.4,28 C36.4,23.3608081 32.6391919,19.6 28,19.6 C23.3608081,19.6 19.6,23.3608081 19.6,28 C19.6,32.6391919 23.3608081,36.4 28,36.4 Z" id="Combined-Shape-Copy-8" fill="url(#linearGradient-1)"></path>
+        </g>
+    </g>
+</svg>

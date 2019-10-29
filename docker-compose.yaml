@@ -1,0 +1,8 @@
+version: '3'
+services:
+  package:
+    build: .
+    environment: 
+      - 'NODELIBCURL_BUILD_STATIC=yes'
+    volumes:
+      - ./packages/apiplus-app/dist:/src/apiplus/packages/apiplus-app/dist

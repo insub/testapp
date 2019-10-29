@@ -1,0 +1,27 @@
+{
+  "name": "apiplus",
+  "private": true,
+  "version": "0.7.0",
+  "author": "apiplus.io <support@apiplus.io>",
+  "scripts": {
+    "bootstrap": "npm install && lerna bootstrap && lerna run bootstrap",
+    "publish": "lerna publish",
+    "clean": "lerna clean --yes",
+    "test": "lerna run test --stream",
+    "app-start": "lerna run start --stream --scope=apiplus-app",
+    "app-build": "lerna run build --stream --scope=apiplus-app",
+    "app-package": "lerna run package --stream --scope=apiplus-app",
+    "format-code": "prettier --write \"**/*.js\""
+  },
+  "devDependencies": {
+    "husky": "^1.0.0-rc.9",
+    "jest": "^22.1.1",
+    "lerna": "^2.5.1",
+    "prettier": "^1.13.6",
+    "pretty-quick": "^1.6.0",
+    "react-hot-loader": "^4.3.11",
+    "webpack": "^4.8.3",
+    "rimraf": "^2.6.3"
+  },
+  "dependencies": {}
+}

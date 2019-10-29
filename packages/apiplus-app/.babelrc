@@ -1,0 +1,30 @@
+{
+  "presets": [
+    "react",
+    "flow"
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-decorators-legacy",
+    "syntax-dynamic-import"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "env", {
+          "targets": {
+            "node": "12"
+          }
+        }
+        ],
+        "flow" // We need to add this again because it has to run before es2015
+      ]
+    }
+  }
+}

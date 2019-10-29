@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>apiplus app</title>
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src * apiplus://*; img-src blob: data: * apiplus://*; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src * 'self' 'unsafe-inline'; media-src blob: data: mediastream: * apiplus://*;">
+  <link rel="stylesheet" href="termynal.css">
+  <link rel="stylesheet" href="apier_iconfont/css/apier_iconfont.css">
+  <style type="text/css">
+    button{
+      background-color: transparent;
+      border: none;
+    }
+    button:focus{
+      outline: none;
+    }
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      vertical-align: baseline;
+    }
+
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+      display: block;
+    }
+
+    body {
+      line-height: normal;
+    }
+
+    ol, ul {
+      list-style: none;
+    }
+
+    blockquote, q {
+      quotes: none;
+    }
+
+    blockquote {
+      &:before, &:after {
+        content: none;
+      }
+    }
+
+    q {
+      &:before, &:after {
+        content: none;
+      }
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    *{
+      font-family: Open Sans, system, -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI',
+            'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+    }
+
+    [theme="apiplus-gray"], [subtheme="apiplus-gray"] {
+      --color-bg: #FFF;
+      --color-darkline: #d7d7d7;
+      --color-window: #dbdde1;
+      --color-font: #353535;
+      --color-font-tag: #666;
+    }
+    [theme="apiplus-gray"] .terminal_pad{
+      --color-bg: #F3F3F3;
+    }
+
+    [theme="apiplus-dark"], [subtheme="apiplus-dark"] {
+      --color-bg: #292C34;
+      --color-window: #282C34;
+      --color-darkline: #1B1D23;
+      --color-font: #9399A9;
+      --color-font-tag: #48505D;
+      --color-gradient-blue:#0AF2CD;
+      --color-gradient-green:#25FF26;
+    }
+    [theme="apiplus-dark"] .center_box{
+      --color-bg: #313640;
+    }
+    [theme="apiplus-dark"] .terminal_pad{
+      --color-bg: #22252B;
+    }
+    
+    [theme="apiplus-dark"] .app_header_btn, [subtheme="apiplus-dark"] .app_header_btn--sub {
+      --color-bg: #313640;
+      --color-font: #9399A9;
+    }
+
+    #termynal{
+      width: 100%;
+      background: none;
+      font-size: 13px;
+      padding: 0;
+      font-weight: bold;
+      color: #c0c0c0;
+    }
+    .success{
+      color: #17d871;
+    }
+    [data-ty]{
+      line-height: 1.5;
+    }
+    .app_main_header {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 99;
+      height: 79px;
+      background-color: var(--color-window);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: solid 1px var(--color-darkline);
+    }
+    .app_main_header .panel_left {
+      display: flex;
+      align-items: center;
+    }
+    .app_main_header .panel_left .avatar_box {
+      height: 30px;
+    }
+    .app_main_header .panel_left .pull_box {
+      display: inline-flex;
+      position: relative;
+      margin-left: 30px;
+      border-radius: 4px;
+      align-items: center;
+    }
+    .app_main_header .panel_left .avatar_box .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 3px;
+      margin: 0 auto 0 12px;
+    }
+    .sync {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      fill: var(--color-font);
+    }
+    .app_main_header .panel_left .pull_box span {
+      font-size: 13px;
+      color: var(--color-font);
+    }
+    .app_main_header .window_handle {
+      display: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 26px;
+      justify-content: flex-end;
+      box-sizing: border-box;
+    }
+    .app_main_header .app_setting_box {
+      margin-right: 30px;
+      position: relative;
+      height: 42px;
+      margin-top: 8px;
+      display: inline-flex;
+    }
+    .app_header_btn{
+      padding: 0;
+    }
+    .app_main_header .app_setting_box .app_header_btn.settings_btn span{
+      border-radius: 0;
+    }
+    .app_main_header .app_setting_box .app_header_btn.support_btn span {
+      border-radius: 0 3px 3px 0;
+    }
+    .app_main_header .app_setting_box .app_header_btn.spec{
+      width: 72px;
+    }
+    .app_main_header .app_setting_box .app_header_btn {
+      text-align: center;
+    }
+    .app_main_header .app_setting_box .app_header_btn.paster_btn{
+      margin: 0 40px 0 0;
+    }
+    .app_main_header .app_setting_box .app_header_btn.sidebar_btn span {
+      border-radius: 3px;
+    }
+    .app_main_header .app_setting_box .app_header_btn span {
+      vertical-align: middle;
+      width: 41px;
+      height: 22px;
+      background-size: 15px 10px;
+      background-position: center;
+      display: inline-block;
+      background-color: var(--color-bg);
+      border-radius: 3px;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+      background-repeat: no-repeat;
+      margin-bottom: 4px;
+    }
+    .app_main_header .app_setting_box .app_header_btn span i {
+      color: var(--color-font);
+      font-size: 10px;
+      line-height: 22px;
+    }
+    .app_main_header .app_setting_box .app_header_btn p {
+      font-size: 10px;
+      margin: 0;
+      color: var(--color-font);
+    }
+    .app_main_header .app_setting_box .app_header_btn.group {
+      margin-right: 1px;
+    }
+    .app_main_header .app_setting_box .app_header_btn.shortcuts_btn span {
+      border-radius: 3px 0 0 3px;
+    }
+    body[data-platform='win32'] .app_main_header .window_handle {
+      display: flex;
+    }
+    body[data-platform='win32'] {
+      box-shadow: inset 0 0 0 1px #DBDBE1;
+      box-sizing: border-box;
+      padding: 1px;
+      border-radius: 0;
+    }
+    body[data-platform='win32'][theme="apiplus-dark"], body[data-platform='win32'][subtheme="apiplus-dark"] {
+      box-shadow: none;
+      padding: 0;
+    }
+    .terminal_pad{
+      background-color: var(--color-bg) !important;
+      border-radius: 0 0 4px 4px;
+      height: 100vh;
+      padding: 100px 20px 20px !important;
+      box-sizing: border-box;
+    }
+    .app_main_header .window_handle button{
+      width: 34px;
+      height: 26px;
+      text-align: center;
+    }
+    .app_main_header .window_handle button i{
+      font-size: 9px;
+      color: var(--color-font-tag);
+    }
+    body[data-platform='win32'] .app_main_header .app_setting_box {
+      margin-top: 24px;
+    }
+    [theme="apiplus-gray"] .terminal_pad span{
+      color: #353535;
+    }
+    [theme="apiplus-gray"] .terminal_pad span.success{
+      color: #17d871;
+    }
+    .avatar{
+      display: inline-block;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      margin-left: 16px;
+    }
+    @keyframes loading {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        fill: var(--color-gradient-blue);      }
+      50% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+        fill: var(--color-gradient-green);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+        fill: var(--color-gradient-blue);
+      }
+    }
+    .center_box{
+      background-color: var(--color-bg);
+      width: 232px;
+      height: 30px;
+      border-radius: 4px;
+      display: flex;
+      position: absolute;
+      left: calc(100vw/2 - 116px);
+    }
+    .center_pad{
+      display: inline-flex;
+      /*width: 90px;*/
+      height: 30px;
+      border-radius: 4px;
+      padding: 0 7px;
+      box-sizing: border-box;
+      align-items: center;
+      /*position: absolute;
+      left: calc(100vw/2 - 45px);*/
+    }
+    .doc_box {
+      padding: 0 10px;
+      border-right: solid 1px var(--color-window);
+      border-radius: 0;
+    }
+    .doc_box p{
+      line-height: 30px;
+      display: flex;
+      align-items: center;
+    }
+    .doc_box i{
+      margin-right: 8px;
+      color: var(--color-font);
+    }
+    .center_pad span{
+      font-size: 13px;
+      color: var(--color-gradient-blue);
+    }
+    .center_pad.doc_box span{
+      color: var(--color-font);
+    }
+    .syncing{
+      padding: 0 10px; 
+    }
+    .sync_frame{
+      display: inline-flex;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 6px;
+      width: 16px;
+      height: 16px;
+      animation: loading 1s infinite linear;
+    }
+    .project_box{
+      position: relative;
+      top: 14px;
+      left: 21px;
+    }
+    .project_box h1{
+      height: 54px;
+      font-size: 16px;
+      color: var(--color-font);
+      display: inline-block;
+    }
+    @keyframes text_loading {
+      0%{
+        content: '';
+      }
+      20%{
+        content: '.';
+      }
+      50%{
+        content: '..'
+      }
+      80%{
+        content: '...'
+      }
+    }
+    .project_box h1 span:after{
+      content: '';
+      letter-spacing: 2px;
+      display: inline-block;
+      width: 16px;
+      animation: text_loading 1.4s infinite linear;
+    }
+    .project_box h1 i{
+      font-size: 10px;
+      margin-left: 8px;
+    }
+    .project_box h1 small{
+      font-size: 12px;
+      font-weight: normal;
+      position: relative;
+      top: -6px;
+      opacity: .5;
+    }
+    .settings_btn_box{
+      display: inline-block;
+      padding-left: 7px;
+      border-left: solid 1px var(--color-gray); 
+      float: right;
+    }
+    .project_settings{
+      display: inline-block;
+    }
+    .project_settings i{
+      color: var(--color-font);
+    }
+  </style>
+</head>
+
+<body data-platform="darwin" theme="apiplus-dark">
+  <section class="app_main_header windowdrag no-wrap">
+    <div class="panel_left">
+      <div class="project_box">
+        <h1>
+          <span>Project is loading </span>
+          <i class="apiplus api-downarrow_exp"></i>
+          <br><small>...</small>
+        </h1>
+        <!-- <div class="settings_btn_box"><button class="project_settings"><i class="apiplus api-settings_icon"></i></button></div> -->
+    </div>
+
+    </div>
+    <div class="center_box">
+      <div class="center_pad doc_box">
+        <p><i class="apiplus api-doc"></i><span>View Document</span></p>
+      </div>
+      <div class="center_pad syncing">
+        <div class="sync_frame">
+          <svg width="16px" height="16px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.9947683,9.37798507 C17.5023015,9.04824792 16.941441,8.83475175 16.3572366,8.74921171 C16.3495197,7.52573796 16.0350459,6.29109967 15.3821173,5.16019412 C13.3487052,1.63822116 8.80268893,0.456033965 5.22830567,2.51970511 C1.6539224,4.58337625 0.404718397,9.11143545 2.43813043,12.6334084 C4.47154246,16.1553814 9.01755877,17.3375686 12.591942,15.2738974 C12.609102,15.2639901 12.6262085,15.2540259 12.6432612,15.2440054 C13.0651464,15.7468022 13.5980408,16.1233313 14.1858431,16.3590036 C13.9664136,16.5132427 13.7382375,16.6590526 13.5015028,16.7957314 C9.19686917,19.2810128 3.69255552,17.8061364 1.20727414,13.5015028 C-1.27800723,9.19686917 0.196869166,3.69255552 4.50150278,1.20727414 C8.80613639,-1.27800723 14.31045,0.196869166 16.7957314,4.50150278 C17.6828826,6.03809375 18.0654229,7.72755027 17.9947683,9.37798507 L17.9947683,9.37798507 Z M14.6665663,13.8136806 C14.2523527,13.0962417 14.4981655,12.1788561 15.2156044,11.7646425 C15.9330433,11.3504289 16.8504289,11.5962417 17.2646425,12.3136806 C17.6788561,13.0311195 17.4330433,13.9485051 16.7156044,14.3627187 C15.9981655,14.7769323 15.0807798,14.5311195 14.6665663,13.8136806 Z" id="Shape"></path>
+          </svg>
+        </div>
+        <span>Syncing</span>
+      </div>
+    </div>
+   
+    <div class="window_handle">
+      <button class=""><i class="apiplus api-minmize"></i></button>
+      <button class=""><i class="apiplus api-maxmize"></i></button>
+      <button class=""><i class="apiplus api-win-close"></i></button>
+    </div>
+    <div class="app_setting_box">
+      <button class="app_header_btn support_btn group">
+        <span><i class="apiplus api-more"></i></span><p>Layout & Setting</p>
+      </button>
+      <img class="avatar" src=avatar.svg />
+    </div>
+  </section>
+
+<div id="termynal" data-termynal class="terminal_pad">
+  <span data-ty data-ty-prompt=">">initializing apiplus</span>
+  <span data-ty="progress" data-ty-progressLength="38"></span>
+  <span data-ty data-ty-prompt=">" class="success">Successfully initializing apiplus</span>
+  <span data-ty data-ty-prompt=">">Hello world!</span>
+  <span data-ty data-ty-prompt=">">Version: dark 0.7.0</span>
+  <span data-ty data-ty-prompt=">">Time: 12.023ms</span>
+  <span data-ty data-ty-prompt=">"></span>
+  <span data-ty data-ty-prompt=">">[localstorage] Initializ localStorage</span>
+  <span data-ty data-ty-prompt=">" class="success">Successfully initializing localStorage</span>
+  <span data-ty data-ty-prompt=">">[main] Loading http://localhost:3333/renderer.html</span>
+  <span data-ty data-ty-prompt=">" class="success">Successfully loading</span>
+  <span data-ty data-ty-prompt=">">[fix] Running database repairs</span>
+  <span data-ty data-ty-prompt=">" class="success">Successfully repair database</span>
+  <span data-ty data-ty-prompt=">">Time: 1.409ms</span>
+  <span data-ty data-ty-prompt=">">[updater] Running updater check</span>
+  <span data-ty data-ty-prompt=">" class="success">Compiled successfully!!!</span>
+  <span data-ty data-ty-prompt=">">App starting...</span>
+  <span data-ty="progress" data-ty-progressPercent="90" data-ty-progressLength="70"></span>
+</div>
+<script src="termynal.js"></script>
+<script type="text/javascript">
+  var termynal = new Termynal('#termynal', { 
+    startDelay: 0,
+    typeDelay: 30,
+    lineDelay: 140,
+    progressLength: 45,
+    progressChar: '.',
+    cursor: '|'
+  })
+</script>
+<script>
+  require('electron').webFrame.setZoomLevelLimits(1,1);
+</script>
+</body>
+</html>

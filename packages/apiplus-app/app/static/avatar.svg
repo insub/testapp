@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>avatar</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-copy-20" transform="translate(-437.000000, -157.000000)" fill-rule="nonzero">
+            <g id="avatar" transform="translate(437.000000, 157.000000)">
+                <rect id="Rectangle" fill="#C2C3C6" x="0" y="0" width="30" height="30"></rect>
+                <path d="M16.9513781,24 L13.048622,24 C9.7078308,24 7,23.998 7,22.687 L7,22.313 C7,19.102 9.7078308,16.501 13.048622,16.501 L16.9513781,16.501 C20.2921693,16.501 23.0000001,19.103 23,22.313 L23,22.687 C23,23.952 20.2921692,24 16.9513781,24 Z M14.8045123,15.0000001 C12.2186739,15.0000001 10.1218049,12.9850001 10.1218049,10.5 C10.1218049,8.01500001 12.2186739,6 14.8045123,6 C17.3903507,6 19.4872196,8.01500001 19.4872196,10.5 C19.4872196,12.9850001 17.3913506,15.0000001 14.8045123,15.0000001 Z" id="Shape" fill="#A5A6AA"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,67 @@
+{
+  "publish": [{
+    "provider": "s3",
+    "bucket": "latest",
+    "endpoint": "apiplus-updates.oss-us-west-1.aliyuncs.com/${env.PRODUCT_THEME}"
+  },
+  {
+    "provider": "s3",
+    "bucket": "latest",
+    "endpoint": "apiplus-updates-sp.oss-ap-southeast-1.aliyuncs.com/${env.PRODUCT_THEME}"
+  },
+  {
+    "provider": "s3",
+    "bucket": "v${version}",
+    "endpoint": "apiplus-updates.oss-us-west-1.aliyuncs.com/${env.PRODUCT_THEME}"
+  },
+  {
+    "provider": "s3",
+    "bucket": "v${version}",
+    "endpoint": "apiplus-updates-sp.oss-ap-southeast-1.aliyuncs.com/${env.PRODUCT_THEME}"
+  }],
+  "extraResources": [
+    {
+      "from": "./bin",
+      "to": "./bin",
+      "filter": "yarn-standalone.js"
+    }
+  ],
+  "fileAssociations": [],
+  "directories": {
+    "app": "build",
+    "output": "dist"
+  },
+  "mac": {
+    "category": "public.app-category.developer-tools",
+    "target": [
+      "dmg",
+      "zip"
+    ]
+  },
+  "win": {
+    "icon": "./build/icon.ico",
+    "target": [
+      "nsis"
+    ]
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": true,
+    "allowElevation": true,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": false,
+    "installerSidebar": "./build/static/install-wizard-24bits.bmp",
+    "uninstallerSidebar": "./build/static/install-wizard-24bits.bmp",
+    "artifactName": "${productName}-${version}.${ext}"
+  },
+  "linux": {
+    "executableName": "apiplus-dev",
+    "synopsis": "REST API client",
+    "category": "Development",
+    "artifactName": "${productName}-${version}.${ext}",
+    "target": [
+      "AppImage",
+      "snap"
+    ]
+  }
+}

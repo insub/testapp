@@ -1,0 +1,161 @@
+@import '../constants/dimensions';
+@import '../constants/colors';
+
+.wrapper {
+  background-color: var(--color-bg);
+  color: var(--color-font);
+  display: grid;
+
+  // These are set in JS
+  //grid-template-rows: ...;
+  //grid-template-columns: ...;
+
+  height: 100%;
+  width: 100%;
+
+  .sidebar {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    grid-row-end: end;
+    min-width: 0;
+  }
+
+  .drag {
+    
+    position: relative;
+
+    &.drag--sidebar{
+      grid-row-start: 3;
+      grid-row-end: end;
+    }
+    
+    &.drag--pane{
+      grid-column-start: 4;
+      grid-row-start: 4;
+      grid-row-end: end;
+    }
+
+    &.vertical {
+      display: none;
+    }
+
+    & > * {
+      //background-color: rgba(255, 0, 0, 0.5);
+      cursor: ew-resize;
+      position: absolute;
+      height: 100%;
+      z-index: 9;
+      width: @drag-width;
+      top: 0;
+      // More to the right so it doesn't cover scroll bars
+      left: -@drag-width / 8;
+    }
+  }
+  
+  .request-pane {
+    min-width: 0;
+    grid-column-start: 3;
+    grid-column-end: span 1;
+    grid-row-start: 4;
+    grid-row-end: end;
+    background: inherit;
+    padding-top: 30px !important;
+    margin-top: 0;
+    border-top: none;
+    border-top: solid 1px var(--color-line);
+    z-index: 2;
+    &.apiplus_init {
+      margin-top: 0;
+    }
+  }
+
+  .response-pane {
+    min-width: 0;
+    grid-column-start: 5;
+    grid-column-end: span 1;
+    grid-row-start: 4;
+    grid-row-end: end;
+    background: inherit;
+  }
+  .app_main_tabs {
+    grid-column-start: 3;
+    grid-column-end: span 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+  .request_pane_header{
+    grid-column-start: 3;
+    grid-column-end: span 3;
+    grid-row-start: 3;
+    padding-bottom: 30px;
+    // border-bottom: solid 1px var(--color-gray);
+  }
+}
+
+.wrapper--vertical {
+  .request_pane_header{
+    padding-bottom: 10px;
+    border-bottom: none;
+    grid-row-end: 4;
+  }
+  .request-pane {
+    grid-column-start: 3;
+    grid-column-end: span 3;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    padding-top: 10px !important;
+    border-top: none;
+    &.apiplus_init {
+      margin-top: 0;
+    }
+  }
+
+  .response-pane {
+    grid-column-start: 3;
+    grid-column-end: span 3;
+    grid-row-start: 6;
+    grid-row-end: span 1;
+    //z-index: 2; // So it covers the URL Bar and stuff
+    .pane__body--placeholder {
+      // grid-row-start: 2;
+      justify-content: flex-start;
+      overflow: auto;
+    }
+  }
+
+  .drag--pane.horizontal {
+    display: none !important;
+  }
+
+  .drag--pane.vertical {
+    display: block !important;
+    grid-column-start: 3;
+    grid-column-end: span 3;
+    grid-row-start: 5;
+    // grid-row-end: span 1;
+
+    & > * {
+      cursor: ns-resize;
+      height: @drag-width;
+      width: 100%;
+      left: 0;
+      // More to the right so it doesn't cover scroll bars
+      top: -@drag-width / 2;
+    }
+  }
+  .app_main_tabs {
+    grid-column-start: 3;
+    grid-column-end: span 3;
+    grid-row-start: 2;
+  }
+}
+.app_main_header {
+  grid-column-start: 1;
+  grid-column-end: end;
+  grid-row-start: 1;
+}
+@media (max-width: @breakpoint-md) {
+  .wrapper {
+    .wrapper--vertical();
+  }
+}

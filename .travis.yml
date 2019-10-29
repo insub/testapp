@@ -1,0 +1,108 @@
+language: node_js
+
+env:
+  global:
+    - PRODUCT_THEME="dark"
+    - PRODUCT_VERSION="v0.7.0"
+
+matrix:
+  include:
+    - os: linux
+      sudo: required
+      dist: trusty
+      env:
+        - DOCKER_COMPOSE_VERSION=1.20.1
+      # Get newer docker-compose
+      before_install:
+        - sudo rm /usr/local/bin/docker-compose
+        - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+        - chmod +x docker-compose
+        - sudo mv docker-compose /usr/local/bin
+        # Some hack to get stdout to be blocking
+      after_success:
+        - python -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&~os.O_NONBLOCK);'
+        - docker-compose build package
+        - docker-compose run package
+        - ls
+        - ls packages/apiplus-app/dist
+        - sudo rm -rf packages/apiplus-app/dist/linux-unpacked
+        - sudo rm -rf packages/apiplus-app/dist/s3
+      after_script:
+        - git config credential.helper "store --file=.git/credentials"
+        - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+        - git ls-remote --tags origin | awk '/^(.*)(s+)(.*[a-zA-Z0-9])$/ {print ":" $2}' | xargs git push origin
+    - os: osx
+      install:
+        - npm install 7zip-bin-mac > /dev/null
+      env:
+        - CSC_LINK=$MAC_CSC_LINK
+        - CSC_KEY_PASSWORD=$MAC_CSC_KEY_PASSWORD
+      after_success:
+        - npm run app-package
+        - ls
+        - ls packages/apiplus-app/dist
+        - sudo rm -rf packages/apiplus-app/dist/mac
+        - sudo rm -rf packages/apiplus-app/dist/s3
+
+cache:
+  directories:
+    - node_modules
+    - build/node_modules
+    - $HOME/.electron
+    - $HOME/.cache
+
+script:
+  - node --version
+  - npm --version
+  - npm run bootstrap
+  # - npm test
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: "apiplus-updates"
+    endpoint: "oss-us-west-1.aliyuncs.com"
+    skip_cleanup: true
+    file_glob: true
+    prerelease: false
+    local_dir: packages/apiplus-app/dist
+    upload-dir: "${PRODUCT_THEME}/latest"
+    on:
+      tags: true
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: "apiplus-updates"
+    endpoint: "oss-us-west-1.aliyuncs.com"
+    skip_cleanup: true
+    file_glob: true
+    prerelease: false
+    local_dir: packages/apiplus-app/dist
+    upload-dir: "${PRODUCT_THEME}/${PRODUCT_VERSION}"
+    on:
+      tags: true
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: "apiplus-updates-sp"
+    endpoint: "oss-ap-southeast-1.aliyuncs.com"
+    skip_cleanup: true
+    file_glob: true
+    prerelease: false
+    local_dir: packages/apiplus-app/dist
+    upload-dir: "${PRODUCT_THEME}/latest"
+    on:
+      tags: true
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: "apiplus-updates-sp"
+    endpoint: "oss-ap-southeast-1.aliyuncs.com"
+    skip_cleanup: true
+    file_glob: true
+    prerelease: false
+    local_dir: packages/apiplus-app/dist
+    upload-dir: "${PRODUCT_THEME}/${PRODUCT_VERSION}"
+    on:
+      tags: true

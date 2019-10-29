@@ -1,0 +1,192 @@
+*[theme],
+*[subtheme] {
+  --color-bg: #fff;
+  --color-font: #353535;
+  --color-white: #fff;
+  --color-light: #f3f3f3;
+  --color-gray: #d7d7d7;
+  --color-silver: #ebebeb;
+  --color-main: #3B82FF;
+  --color-window: #dbdde1;
+  --color-win-close: #f7524f;
+  --color-sel: #4474FA;
+  --color-post: #56b6c2;
+  --color-get: #61CD92;
+  --color-put: #C974EC;
+  --color-patch: #e4a952;
+  --color-delete: #E3584A;
+  --color-others: #e4a952;
+  --btn-hover: #5081E9;
+
+  --color-success: #93C6A3;
+  --color-notice: #b59e00;
+  --color-warning: #da7c02;
+  --color-danger: #f97e88;
+  --color-surprise: #8570d2;
+  --color-info: #c5dbf2;
+
+  --color-line: #e8e8e8;
+  --color-darkline: #d7d7d7;
+  --color-gradient: linear-gradient(#F3F3F3 10%, rgba(243,243,243,0.8) 50%, rgba(243,243,243,0.4) 70%, transparent);
+  --color-paster: #FAF5E5;
+
+  --color-tab: #ebebeb;
+  --color-tab-border: #e2e2e2;
+  --color-tab-hover: #f3f3f3;
+  --color-tab-active: #fff;
+
+  --color-font-success: #50a500;
+  --color-font-notice: #b59e00;
+  --color-font-warning: #da7c02;
+  --color-font-danger: #d04845;
+  --color-font-surprise: #8570d2;
+  --color-font-info: #0092bf;
+  --color-font-tag: #666;
+  --color-font-light: #999;
+  --color-font-link: #353535;
+  --color-font-paster: #E4AF0A;
+  --color-font-variable: #ff6a7c;
+
+  --color-font-post: #56b6c2;
+  --color-font-get: #61CD92;
+  --color-font-put: #C974EC;
+  --color-font-delete: #E3584A;
+  --color-font-patch: #e4a952;
+  --color-font-others: #e4a952;
+
+  --color-gradient-blue:#0AF2CD;
+  --color-gradient-green:#25FF26;
+  --color-toastify:#555B6C;
+
+  --hl-xxs: rgba(130, 130, 130, 0.05);
+  --hl-xs: rgba(130, 130, 130, 0.1);
+  --hl-sm: rgba(130, 130, 130, 0.25);
+  --hl-md: rgba(130, 130, 130, 0.35);
+  --hl-lg: rgba(130, 130, 130, 0.5);
+  --hl-xl: rgba(130, 130, 130, 0.8);
+  --hl: rgba(130, 130, 130, 1);
+
+  .theme--transparent-overlay {
+    --color-bg: rgba(5, 5, 5, 0.7);
+    --color-font: #ddd;
+  }
+}
+
+@opacity-subtle: 0.7;
+@opacity-super-subtle: 0.5;
+
+@hl-xxs: var(--hl-xxs);
+@hl-xs: var(--hl-xs);
+@hl-sm: var(--hl-sm);
+@hl-md: var(--hl-md);
+@hl-lg: var(--hl-lg);
+@hl-xl: var(--hl-xl);
+@hl: var(--hl);
+
+[class^='http-method-'],
+[class*=' http-method-'] {
+  // Default method color
+  color: var(--color-font);
+}
+
+.http-method-POST{
+  color: var(--color-font-post);
+}
+.http-method-PATCH{
+  color: var(--color-font-patch);
+}
+.http-method-PUT {
+  color: var(--color-font-put);
+}
+.http-method-DELETE{
+  color: var(--color-font-delete);
+}
+.http-method-OPTIONS,
+.http-method-HEAD{
+  color: var(--color-others)
+}
+.http-method-GET{
+  color: var(--color-font-get);
+}
+.success {
+  color: var(--color-success) !important;
+}
+
+.notice {
+  color: var(--color-notice) !important;
+}
+
+.warning{
+  color: var(--color-warning) !important;
+}
+
+.danger {
+  color: var(--color-danger) !important;
+}
+
+.info {
+  color: var(--color-info) !important;
+}
+
+.surprise {
+  color: var(--color-surprise) !important;
+}
+
+.boring {
+  color: var(--color-font) !important;
+}
+
+.bg-default {
+  background: var(--color-bg);
+}
+
+.bg-success,
+.bg-http-method-POST {
+  background: var(--color-success) !important;
+  text-shadow: 0 0 0.05em var(--color-success);
+  color: var(--color-font-success) !important;
+}
+
+.bg-notice,
+.bg-http-method-PATCH {
+  background: var(--color-notice) !important;
+  text-shadow: 0 0 0.05em var(--color-notice);
+  color: var(--color-font-notice) !important;
+}
+
+.bg-warning,
+.bg-http-method-PUT {
+  background: var(--color-warning) !important;
+  text-shadow: 0 0 0.05em var(--color-warning);
+  color: var(--color-font-warning) !important;
+}
+
+.bg-danger,
+.bg-http-method-DELETE {
+  background: var(--color-danger) !important;
+  text-shadow: 0 0 0.05em var(--color-danger);
+  color: var(--color-font-danger) !important;
+}
+
+.text-danger {
+  color: var(--color-danger);
+}
+
+.bg-info,
+.bg-http-method-OPTIONS,
+.bg-http-method-HEAD {
+  background: var(--color-info) !important;
+  text-shadow: 0 0 0.05em var(--color-info);
+  color: var(--color-font-info) !important;
+}
+
+.bg-surprise,
+.bg-http-method-GET {
+  background: var(--color-surprise) !important;
+  text-shadow: 0 0 0.05em var(--color-surprise);
+  color: var(--color-font-surprise) !important;
+}
+
+.font-error {
+  color: var(--color-danger);
+}

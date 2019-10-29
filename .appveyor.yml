@@ -1,0 +1,59 @@
+image: Visual Studio 2015
+build: off
+test: off
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+shallow_clone: true
+platform: x64
+environment:
+  NODEJS_VERSION: "8"
+  CSC_LINK: '%WINDOWS_CSC_LINK%'
+  CSC_KEY_PASSWORD: '%WINDOWS_CSC_KEY_PASSWORD%'
+  # PRODUCT_THEME: "dark"
+  # PRODUCT_VERSION: "v0.7.0"
+
+# Things to install after repo clone
+install:
+  - SET "PATH=%PATH%;C:\Program Files\Git\mingw64\libexec\git-core" # For weird git bug
+  - ps: Install-Product node $env:NODEJS_VERSION $env:Platform
+  - node --version
+  - npm --version
+  - npm config set msvs_version 2015
+  - npm run bootstrap
+  # - npm test
+
+# cache:
+#   - '%USERPROFILE%\.electron -> packages/apiplus-app/package.json'
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+build_script:
+  - npm install --no-save 7zip-bin-win app-builder-bin-win
+  - if %APPVEYOR_REPO_TAG%==true npm run app-package
+
+# #---------------------------------#
+# #      artifacts configuration    #
+# #---------------------------------#
+
+# artifacts:
+#   - path: packages\apiplus-app\dist\latest.yml
+#     name: dist
+
+# #---------------------------------#
+# #     deployment configuration    #
+# #---------------------------------#
+
+# deploy:
+#   description: ''
+#   provider: GitHub
+#   auth_token:
+#     secure: CQKFBxUWG5kTR9d3MYFDYWbuZZ6zlYlkhvVJHFHZoRNSNRjmx/upf3srqackCVLE
+#   artifact: dist
+#   prerelease: true
+#   on:
+#     appveyor_repo_tag: true

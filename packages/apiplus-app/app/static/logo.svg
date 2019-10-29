@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="78.8736979%" y1="24.226888%" x2="33.6588542%" y2="69.7509766%" id="linearGradient-1">
+            <stop stop-color="#25FF26" offset="0%"></stop>
+            <stop stop-color="#06DEBC" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo">
+            <path d="M8,16 C15,16 16,12 16,8 C16,4 15,0 8,0 C1,8.57252759e-16 0,4 0,8 C2.4492936e-16,12 1,16 8,16 Z" id="Path-Copy-5" fill="#000000" fill-rule="nonzero"></path>
+            <path d="M8,12 C5.790861,12 4,10.209139 4,8 C4,5.790861 5.790861,4 8,4 C10.209139,4 12,5.790861 12,8 C12,10.209139 10.209139,12 8,12 Z M8,10.4 C9.3254834,10.4 10.4,9.3254834 10.4,8 C10.4,6.6745166 9.3254834,5.6 8,5.6 C6.6745166,5.6 5.6,6.6745166 5.6,8 C5.6,9.3254834 6.6745166,10.4 8,10.4 Z" id="Combined-Shape-Copy-8" fill="url(#linearGradient-1)"></path>
+        </g>
+    </g>
+</svg>
