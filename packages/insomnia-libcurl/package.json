@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "fstream": "^1.0.12",
-    "node-libcurl": "^2.0.2",
+    "node-libcurl": "2.0.2",
     "tar": "^4.4.10"
   }
 }
