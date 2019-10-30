@@ -23,10 +23,11 @@ install:
   - npm -g install npm@6.11.3
   - set PATH=%APPDATA%\npm;%PATH%
   - npm i -g nodejs/node-gyp#rvagg/v6.0.1-proposal
-  - for /f "delims=" %P in ('npm prefix -g') do npm config set node_gyp "C:\Users\appveyor\AppData\Roaming\npm\node_modules\node-gyp\bin\node-gyp.js"
-  - npm config set node_gyp "C:\Users\appveyor\AppData\Roaming\npm\node_modules\node-gyp\bin\node-gyp.js"
+  - npm config set prefix --global node_gyp C:\Users\appveyor\AppData\Roaming\npm\node_modules\node-gyp\bin\node-gyp.js
+  - npm config get prefix --global
   - npm --version
   - npm config set msvs_version 2015
+  - npm config get
   - npm run bootstrap
   # - npm test
 
