@@ -20,16 +20,8 @@ install:
   - SET "PATH=%PATH%;C:\Program Files\Git\mingw64\libexec\git-core" # For weird git bug
   - ps: Install-Product node $env:NODEJS_VERSION $env:Platform
   - node --version
-  - npm -g install npm@6.11.3
-  - set PATH=%APPDATA%\npm;%PATH%
   - npm --version
-  - npm i -g nodejs/node-gyp#rvagg/v6.0.1-proposal
-  - npm list -g --depth=0
   - npm config set msvs_version 2015
-  - npm config set node_gyp C:\Users\appveyor\AppData\Roaming\npm\node_modules\node-gyp\bin\node-gyp.js
-  - npm config set node_gyp C:\Users\appveyor\AppData\Roaming\npm\node_modules\node-gyp\bin\node-gyp.js prefix --global
-  - npm config get
-  - npm config get prefix --global
   - npm run bootstrap
   # - npm test
 
