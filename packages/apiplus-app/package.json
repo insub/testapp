@@ -161,6 +161,7 @@
     "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
+    "@electerm/electron-rebuild": "^1.8.6",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.3",
@@ -182,8 +183,6 @@
     "electron-download-tf": "^4.3.4",
     "electron-notarize": "^0.1.1",
     "electron-publisher-s3": "^20.17.2",
-    "electron-rebuild": "^1.8.6",
-    "node-gyp": "^6.0.1",
     "electron-updater": "3.0.0",
     "eslint": "^4.19.1",
     "eslint-config-semistandard": "^12.0.1",
@@ -203,6 +202,7 @@
     "less": "^2.7.2",
     "less-loader": "^4.1.0",
     "ncp": "^2.0.0",
+    "node-gyp": "^6.0.1",
     "npm": "^6.11.3",
     "react-hot-loader": "^4.8.3",
     "redux-mock-store": "^1.0.2",
